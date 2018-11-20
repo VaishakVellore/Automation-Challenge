@@ -6,10 +6,18 @@ import org.jsoup.nodes.Element;
 public class Challenge {
 
     public static void main(String[] args) {
-        String blogUrl = "http://hpa.services/automation-challenge/";
+        String url_open ="http://hpa.services/automation-challenge/";
         try {
-            Document doc = Jsoup.connect(blogUrl).get();
-            doc.select("p").forEach(System.out::println);
+            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Document doc = Jsoup.connect(url_open).get();
+            //doc.select("p").forEach(System.out::println);
+            Element pag = doc.getElementById("BoxParagraph1");
+            System.out.println(pag);
         } catch (IOException e) {
             e.printStackTrace();
         }
